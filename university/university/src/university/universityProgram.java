@@ -124,16 +124,16 @@ private PrintService printService= new PrintServiceImp();
 	
 	private void removestudentMenu() {
 		//삭제할 학생 입력
-				System.out.print("삭제할 학생 : ");
-				scan.nextLine();//입력버퍼 엔터 처리
-				String word = scan.nextLine();
+		System.out.print("삭제할 학생 : ");
+		scan.nextLine();//입력버퍼 엔터 처리
+	    String word = scan.nextLine();
 				
-				//단어 삭제
-				if(university.removeWord(student)) {
-					System.out.println("학생을 삭제했습니다.");
-				}else {
-					System.out.println("존재하지 않는 학생입니다.");
-				}
+	
+		if(university.removeWord(student)) {
+		System.out.println("학생을 삭제했습니다.");
+		}else {
+		System.out.println("존재하지 않는 학생입니다.");
+		}
 		
 	}
 

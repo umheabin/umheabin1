@@ -5,4 +5,6 @@ public interface PrintService {
 
 	void professorMenu();
 
+	void studentMenu();
+
 }
