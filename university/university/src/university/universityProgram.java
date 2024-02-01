@@ -123,7 +123,7 @@ private PrintService printService= new PrintServiceImp();
 	}
 	
 	private void removestudentMenu() {
-		//삭제할 단어 입력
+		//삭제할 학생 입력
 				System.out.print("삭제할 학생 : ");
 				scan.nextLine();//입력버퍼 엔터 처리
 				String word = scan.nextLine();
@@ -155,34 +155,34 @@ private PrintService printService= new PrintServiceImp();
 
 	private void addstudentMenu() {
 		
-				System.out.print("학생 : ");
-				scan.nextLine();//이전에 입력한 엔터를 처리
-				String word = scan.nextLine();
+	System.out.print("학생 : ");
+    scan.nextLine();//이전에 입력한 엔터를 처리
+    String word = scan.nextLine();
 				
-				//뜻들을 저장할 리스트
-				List<student> meanList = new ArrayList<student>();
-				char isContinue = 'n';
-				do {
-					System.out.print("학생 : ");
-					String student = scan.next();
-					
-					studentList.add(new student(student);
-					System.out.print("학생을 추가하겠습니까?(y/n) : ");
-					isContinue = scan.next().charAt(0);
-					
-				}while(isContinue == 'y');
-				//단어장이 비어 있으면
-				if(university == null) {
-					System.out.println("학생이 없습니다.");
-					return;
-				}
 				
-				//단어장에 추가
-				if(university.addWord(student)) {
-					System.out.println("학생을 추가했습니다.");
-				}else {
-					System.out.println("학생이 이미 등록된 상태입니다.");
-				}
+    List<student> meanList = new ArrayList<student>();
+	char isContinue = 'n';
+	do {
+	System.out.print("학생 : ");
+	String student = scan.next();
+					
+	studentList.add(new student(student);
+	System.out.print("학생을 추가하겠습니까?(y/n) : ");
+	isContinue = scan.next().charAt(0);
+					
+	}while(isContinue == 'y');
+
+	if(university == null) {
+	System.out.println("학생이 없습니다.");
+	return;
+	}
+				
+				
+    if(university.addWord(student)) {
+	System.out.println("학생을 추가했습니다.");
+    }else {
+	System.out.println("학생이 이미 등록된 상태입니다.");
+	}
 		
 	}
 
