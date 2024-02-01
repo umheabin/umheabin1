@@ -91,7 +91,6 @@ private PrintService printService= new PrintServiceImp();
 	
 	private void studentmanagement() {
 		int menu;
-		int student_EXIT;
 		do {
 			//학생 관리 메뉴 출력
 			printService.studentMenu();
