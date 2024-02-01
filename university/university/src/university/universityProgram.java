@@ -9,7 +9,7 @@ import uniersity.service.PrintServiceImp;
 
 public class universityProgram implements Program {
 
-private static final int WORD_EXIT = 0;
+private static final int professor_EXIT = 0;
 
 
 private Scanner scan = new Scanner(System.in);
@@ -20,9 +20,9 @@ private PrintService printService= new PrintServiceImp();{
 	@Override
 	public void run() {
 		int menu = 0;
-		String fileName = "src/word/wordList.txt";
+		String fileName = "src/university/university.txt";
 		//불러오기
-		List<Word> list = fileService.load(fileName);
+		List<university> list = fileService.load(fileName);
 		university = new university(list);
 		do {
 			try {
@@ -84,20 +84,30 @@ private PrintService printService= new PrintServiceImp();{
 	}
 
 	private void studentmanagement() {
-		// TODO Auto-generated method stub
-		
+		int menu;
+		do {
+			//학생 관리 메뉴 출력
+			printService.studentMenu();
+			//메뉴 선택
+			menu = scan.nextInt();
+			//메뉴 실행
+			runstudentMenu(menu);
+		}while(menu != student_EXIT);
 	}
+	
+	
+	
 
 	private void professormanagement() {
 		int menu;
 		do {
-			//단어 관리 메뉴 출력
+			//교수 관리 메뉴 출력
 			printService.professorMenu();
 			//메뉴 선택
 			menu = scan.nextInt();
 			//메뉴 실행
 			runprofessorMenu(menu);
-		}while(menu != WORD_EXIT);
+		}while(menu != professor_EXIT);
 	}
 	
 	private void runprofessorMenu(int menu) {
