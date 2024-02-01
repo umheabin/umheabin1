@@ -15,7 +15,9 @@ private static final int professor_EXIT = 0;
 private Scanner scan = new Scanner(System.in);
 
 
-private PrintService printService= new PrintServiceImp();{
+private PrintService printService= new PrintServiceImp();
+
+
 	
 	@Override
 	public void run() {
@@ -83,8 +85,13 @@ private PrintService printService= new PrintServiceImp();{
 		
 	}
 
+	
+	
+	
+	
 	private void studentmanagement() {
 		int menu;
+		int student_EXIT;
 		do {
 			//학생 관리 메뉴 출력
 			printService.studentMenu();
@@ -95,8 +102,89 @@ private PrintService printService= new PrintServiceImp();{
 		}while(menu != student_EXIT);
 	}
 	
+	private void runstudentMenu(int menu) {
+		switch(menu) {
+		case 1:
+			addstudentMenu(); /*학생 등록*/
+			break;
+		case 2:
+			setstudentMenu();  /*학생 수정*/
+			break;
+		case 3:
+			removestudentMenu(); /*학생 삭제*/
+			break;
+		case 4:
+			System.out.println("이전 메뉴로 돌아갑니다.");
+			break;
+		default:
+			throw new InputMismatchException();
+		}
+		
+	}
 	
-	
+	private void removestudentMenu() {
+		//삭제할 단어 입력
+				System.out.print("삭제할 학생 : ");
+				scan.nextLine();//입력버퍼 엔터 처리
+				String word = scan.nextLine();
+				
+				//단어 삭제
+				if(university.removeWord(student)) {
+					System.out.println("학생을 삭제했습니다.");
+				}else {
+					System.out.println("존재하지 않는 학생입니다.");
+				}
+		
+	}
+
+	private void setstudentMenu() {
+		System.out.print("수정할 학생명 : ");
+		scan.nextLine();//이전에 입력한 엔터 처리
+		String oldStudent = scan.nextLine();
+		System.out.print("새 학생명 : ");
+		String newStudent = scan.nextLine();
+		
+		//단어를 수정
+		if(university.setStudent(oldStudent, newStudent)) {
+			System.out.println("학생명을 수정했습니다.");
+		}else {
+			System.out.println("학생명을 수정하지 못했습니다.");
+		}
+		
+	}
+
+	private void addstudentMenu() {
+		
+				System.out.print("학생 : ");
+				scan.nextLine();//이전에 입력한 엔터를 처리
+				String word = scan.nextLine();
+				
+				//뜻들을 저장할 리스트
+				List<student> meanList = new ArrayList<student>();
+				char isContinue = 'n';
+				do {
+					System.out.print("학생 : ");
+					String student = scan.next();
+					
+					studentList.add(new student(student);
+					System.out.print("학생을 추가하겠습니까?(y/n) : ");
+					isContinue = scan.next().charAt(0);
+					
+				}while(isContinue == 'y');
+				//단어장이 비어 있으면
+				if(university == null) {
+					System.out.println("학생이 없습니다.");
+					return;
+				}
+				
+				//단어장에 추가
+				if(university.addWord(student)) {
+					System.out.println("학생을 추가했습니다.");
+				}else {
+					System.out.println("학생이 이미 등록된 상태입니다.");
+				}
+		
+	}
 
 	private void professormanagement() {
 		int menu;
@@ -137,7 +225,7 @@ private PrintService printService= new PrintServiceImp();{
 		String word = scan.nextLine();
 		
 		//단어 삭제
-		if(university.removeWord(word)) {
+		if(university.removeWord(professor)) {
 			System.out.println("교수를 삭제했습니다.");
 		}else {
 			System.out.println("존재하지 않는 교수 목록입니다.");
